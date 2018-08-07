@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+    testCompile('junit:junit:4.12')
+	testCompile('org.mockito:mockito-core:2.18.0')
+}
+
+run {
+    main = 'br.com.meal.MealApplication'
+    standardInput = System.in
+}
+
+test {
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: ${descriptor}")
+    }
+}
